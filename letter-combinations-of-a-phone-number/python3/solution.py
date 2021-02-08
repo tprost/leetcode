@@ -10,6 +10,11 @@ buttons = {
     "8": ["t", "u", "v"],
     "9": ["w", "x", "y", "z"],
 }
+#
+# Naive solution using recursion.
+# Worst case is something like O(4^n) where n is the number of digits in the phone number.
+# Better solutions are possible.
+#
 class Solution:
     def letterCombinations(self, digits: str) -> List[str]:
 

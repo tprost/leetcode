@@ -27,9 +27,9 @@ def test_combinations(phone_number, combinations):
     solution = Solution()
     assert solution.letterCombinations(phone_number) == combinations
 
-# def test_solution_3():
-#     solution = Solution()
-#     assert solution.letterCombinations("23") == ["ad","ae","af","bd","be","bf","cd","ce","cf"]
+def test_solution_3():
+    solution = Solution()
+    assert len(solution.letterCombinations("2345")) == 81
 
 # def test_solution_4():
 #     solution = Solution()
