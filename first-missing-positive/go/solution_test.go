@@ -11,6 +11,10 @@ func assertFirstMissingPositive(t *testing.T, sequence []int, expected int) {
 
 func TestFirstMissingPositive(t *testing.T) {
 
+	t.Run("StupidCase", func(t *testing.T) {
+		assertFirstMissingPositive(t, []int{}, 1)
+	})
+
 	t.Run("AllNegative", func(t *testing.T) {
 		assertFirstMissingPositive(t, []int{-1, -2, -3}, 1)
 	})
