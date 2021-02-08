@@ -3,12 +3,14 @@ class Solution:
         return ""        
     
     def intToRoman(self, num: int) -> str:
+        if num == 0:
+            return ""
+        if num >= 1 and num <= 3:
+            return "I" * num
         if num == 4:
             return "IV"        
-        if num >= 5 and num <= 7:
-            return "V" + self.intToRoman(num-5)
-        if num == 8:
-            return "VIII"
+        if num >= 5 and num <= 8:
+            return "V" + self.intToRoman(num-5)        
         if num == 9:
             return "IX"        
         if num >= 10 and num <= 99:
@@ -28,8 +30,4 @@ class Solution:
         if num >= 2000 and num <= 2999:            
             return "MM" + self.intToRoman(num - 2000)
         if num >= 3000 and num <= 3999:            
-            return "MMM" + self.intToRoman(num - 3000)
-        out = ""
-        for x in range(num):
-            out += "I"
-        return out
+            return "MMM" + self.intToRoman(num - 3000)        
