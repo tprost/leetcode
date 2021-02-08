@@ -11,22 +11,38 @@ buttons = {
     "9": ["w", "x", "y", "z"],
 }
 #
-# Naive solution using recursion.
-# Worst case is something like O(4^n) where n is the number of digits in the phone number.
-# Better solutions are possible.
+# Iterate through possible combinations using a "combination lock"
+# style array of indexes that we iterate through algorithmically.
 #
 class Solution:
     def letterCombinations(self, digits: str) -> List[str]:
 
         if digits == "":
             return []
-        
-        if digits in buttons:
-            return buttons[digits]
-        
-        phone_numbers = []        
-        tails = self.letterCombinations(digits[1:])
-        for letter in buttons[digits[0]]:
-            for tail in tails:
-                phone_numbers.append(letter + tail)
+
+        phone_numbers = []
+
+        combo = []
+        for i in range(0, len(digits)):
+            combo.append(0)            
+
+        done = False
+
+        while not done:
+
+            phone_number = ""
+            for i in range(0, len(combo)):
+                phone_number += buttons[digits[i]][combo[i]]
+            phone_numbers.append(phone_number)
+            
+            for i in range(len(digits) - 1, -1, -1):
+                if combo[i] < len(buttons[digits[i]]) - 1:
+                    combo[i] = combo[i] + 1
+                    break
+                else:
+                    combo[i] = 0
+                if combo[i] == 0 and i == 0:
+                    done = True            
+                
+
         return phone_numbers
