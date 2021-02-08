@@ -50,6 +50,13 @@ def test_answer():
     (96, "XCVI"),
     (99, "XCIX"),
     (100, "C"),
+    (101, "CI"),    
+    (199, "CXCIX"),
+    (200, "CC"),
+    (451, "CDLI"),
+    (499, "CDXCIX"),
+    (500, "D"),
+    (989, "CMLXXXIX"),
 ])
 def test_foo(test_input, test_output):
     solution = Solution()
