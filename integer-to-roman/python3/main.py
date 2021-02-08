@@ -22,7 +22,13 @@ class Solution:
             roman = roman.replace("X", "M")
             roman = roman.replace("V", "D")
             roman = roman.replace("I", "C")            
-            return roman + self.intToRoman(num % 100)                
+            return roman + self.intToRoman(num % 100)
+        if num >= 1000 and num <= 1999:            
+            return "M" + self.intToRoman(num - 1000)
+        if num >= 2000 and num <= 2999:            
+            return "MM" + self.intToRoman(num - 2000)
+        if num >= 3000 and num <= 3999:            
+            return "MMM" + self.intToRoman(num - 3000)
         out = ""
         for x in range(num):
             out += "I"

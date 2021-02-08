@@ -57,6 +57,11 @@ def test_answer():
     (499, "CDXCIX"),
     (500, "D"),
     (989, "CMLXXXIX"),
+    (1000, "M"),
+    (1001, "MI"),
+    (1989, "MCMLXXXIX"),
+    (2989, "MMCMLXXXIX"),
+    (3989, "MMMCMLXXXIX"),
 ])
 def test_foo(test_input, test_output):
     solution = Solution()
