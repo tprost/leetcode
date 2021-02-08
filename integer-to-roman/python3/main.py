@@ -1,6 +1,15 @@
 class Solution:
-    def prefix(self, num: int, factor: int, one: str, five: str) -> str:
-        return ""        
+    def multiply(self, num: str, factor: int) -> str:
+        if factor == 100:
+            num = num.replace("X", "M")
+            num = num.replace("V", "D")
+            num = num.replace("I", "C")
+            return num          
+        if factor == 10:
+            num = num.replace("X", "C")
+            num = num.replace("V", "L")
+            num = num.replace("I", "X")
+            return num        
     
     def intToRoman(self, num: int) -> str:
         if num == 0:
@@ -14,16 +23,10 @@ class Solution:
         if num == 9:
             return "IX"        
         if num >= 10 and num <= 99:
-            roman = self.intToRoman(num // 10)
-            roman = roman.replace("X", "C")
-            roman = roman.replace("V", "L")
-            roman = roman.replace("I", "X")            
-            return roman + self.intToRoman(num % 10)
+            tens = self.multiply(self.intToRoman(num // 10), 10)
+            return tens + self.intToRoman(num % 10)
         if num >= 100 and num <= 999:
-            roman = self.intToRoman(num // 100)
-            roman = roman.replace("X", "M")
-            roman = roman.replace("V", "D")
-            roman = roman.replace("I", "C")            
-            return roman + self.intToRoman(num % 100)
+            hundreds = self.multiply(self.intToRoman(num // 100), 100)
+            return hundreds + self.intToRoman(num % 100)        
         if num >= 1000 and num <= 3999:            
             return ("M"*(num // 1000)) + self.intToRoman(num - (num // 1000)*1000)        
