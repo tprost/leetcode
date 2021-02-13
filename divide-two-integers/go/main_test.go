@@ -53,4 +53,13 @@ func TestDivideTwoIntegers(t *testing.T) {
 	assertDivide(t, 6, 3, 2)
 	assertDivide(t, 18, 3, 6)
 
+	assertDivide(t, 1<<31, 2, 1<<30)
+	assertDivide(t, 1<<31, 76, 28256363)
+	assertDivide(t, -1<<31, 76, -28256363)
+
+	assertDivide(t, -2147483648, -1, 2147483647)
+	assertDivide(t, 2147483648, 1, 2147483647)
+	assertDivide(t, 2147483648, -1, -2147483648)
+	assertDivide(t, -2147483648, 1, -2147483648)
+
 }

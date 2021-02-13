@@ -1,20 +1,27 @@
 package main
 
-func flip(number int) int {
-	return -number
+func divide(dividend int, divisor int) int {
+	res := divideRecursive(dividend, divisor)
+	if res > 2147483647 {
+		return 2147483647
+	}
+	if res < -2147483648 {
+		return -2147483648
+	}
+	return res
 }
 
-func divide(dividend int, divisor int) int {
+func divideRecursive(dividend int, divisor int) int {
 
 	// deal with negatives by recursively calling with positives
 	if divisor < 0 && dividend < 0 {
-		return divide(-dividend, -divisor)
+		return divideRecursive(-dividend, -divisor)
 	}
 	if divisor < 0 {
-		return -divide(dividend, -divisor)
+		return -divideRecursive(dividend, -divisor)
 	}
 	if dividend < 0 {
-		return -divide(-dividend, divisor)
+		return -divideRecursive(-dividend, divisor)
 	}
 
 	// at this point dividend and divisor are both non-negative
@@ -37,6 +44,6 @@ func divide(dividend int, divisor int) int {
 	for divisor<<(i+1) <= dividend {
 		i++
 	}
-	return 1<<i + divide(dividend-divisor<<i, divisor)
+	return 1<<i + divideRecursive(dividend-divisor<<i, divisor)
 
 }
