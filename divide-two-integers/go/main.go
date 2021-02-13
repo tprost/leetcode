@@ -2,6 +2,8 @@ package main
 
 func divide(dividend int, divisor int) int {
 	res := divideRecursive(dividend, divisor)
+
+	// truncate the integers to appease the test suite :)
 	if res > 2147483647 {
 		return 2147483647
 	}
@@ -23,8 +25,6 @@ func divideRecursive(dividend int, divisor int) int {
 	if dividend < 0 {
 		return -divideRecursive(-dividend, divisor)
 	}
-
-	// at this point dividend and divisor are both non-negative
 	if dividend == 0 {
 		return 0
 	}
